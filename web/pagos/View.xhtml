@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/common/commonLayout.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ViewPagosTitle}"></h:outputText>
         </ui:define>
@@ -19,14 +19,14 @@
                     <h:outputText value="#{pagosController.selected.idPago}" title="#{bundle.ViewPagosTitle_idPago}"/>
                     <h:outputText value="#{bundle.ViewPagosLabel_fechaPago}"/>
                     <h:outputText value="#{pagosController.selected.fechaPago}" title="#{bundle.ViewPagosTitle_fechaPago}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
                     </h:outputText>
                     <h:outputText value="#{bundle.ViewPagosLabel_abonado}"/>
                     <h:outputText value="#{pagosController.selected.abonado}" title="#{bundle.ViewPagosTitle_abonado}"/>
                     <h:outputText value="#{bundle.ViewPagosLabel_estado}"/>
                     <h:outputText value="#{pagosController.selected.estado}" title="#{bundle.ViewPagosTitle_estado}"/>
                     <h:outputText value="#{bundle.ViewPagosLabel_arrendatariosCedula}"/>
-                    <h:outputText value="#{pagosController.selected.arrendatariosCedula}" title="#{bundle.ViewPagosTitle_arrendatariosCedula}"/>
+                    <h:outputText value="#{pagosController.selected.arrendatariosCedula.toString()}" title="#{bundle.ViewPagosTitle_arrendatariosCedula}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{pagosController.destroyAndView}" value="#{bundle.ViewPagosDestroyLink}"/>

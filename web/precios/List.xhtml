@@ -18,51 +18,51 @@
                             <h:commandLink action="#{preciosController.prepareCreate}" value="#{bundle.ListPreciosCreateLink}" class="btn btn-primary"/>
                         </div>
                     </div>
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListPreciosEmpty}" rendered="#{preciosController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{preciosController.items.rowCount > 0}">
-                    <h:outputText value="#{preciosController.pagination.pageFirstItem + 1}..#{preciosController.pagination.pageLastItem + 1}/#{preciosController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{preciosController.previous}" value="#{bundle.Previous} #{preciosController.pagination.pageSize}" rendered="#{preciosController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{preciosController.next}" value="#{bundle.Next} #{preciosController.pagination.pageSize}" rendered="#{preciosController.pagination.hasNextPage}"/>&nbsp;
-                    <div class="card-body">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListPreciosEmpty}" rendered="#{preciosController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{preciosController.items.rowCount > 0}">
+                        <h:outputText value="#{preciosController.pagination.pageFirstItem + 1}..#{preciosController.pagination.pageLastItem + 1}/#{preciosController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{preciosController.previous}" value="#{bundle.Previous} #{preciosController.pagination.pageSize}" rendered="#{preciosController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{preciosController.next}" value="#{bundle.Next} #{preciosController.pagination.pageSize}" rendered="#{preciosController.pagination.hasNextPage}"/>&nbsp;
+                        <div class="card-body">
                             <div class="table-responsive">
-                    <h:dataTable value="#{preciosController.items}" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" var="item" width="100%" cellspacing="0" rules="all" id="dataTable" class="table table-bordered">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPreciosTitle_idPrecio}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idPrecio}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPreciosTitle_valorArriendo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.valorArriendo}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPreciosTitle_valorGarantia}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.valorGarantia}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{preciosController.prepareView}" value="#{bundle.ListPreciosViewLink}" class="btn btn-primary"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{preciosController.prepareEdit}" value="#{bundle.ListPreciosEditLink}" class="btn btn-primary"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{preciosController.destroy}" value="#{bundle.ListPreciosDestroyLink}" class="btn btn-primary"/>
-                        </h:column>
-                    </h:dataTable>
+                                <h:dataTable value="#{preciosController.items}" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" var="item" width="100%" cellspacing="0" rules="all" id="dataTable" class="table table-bordered">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListPreciosTitle_idPrecio}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idPrecio}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListPreciosTitle_valorArriendo}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.valorArriendo}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListPreciosTitle_valorGarantia}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.valorGarantia}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="&nbsp;"/>
+                                        </f:facet>
+                                        <h:commandLink action="#{preciosController.prepareView}" value="#{bundle.ListPreciosViewLink}" class="btn btn-primary"/>
+                                        <h:outputText value=" "/>
+                                        <h:commandLink action="#{preciosController.prepareEdit}" value="#{bundle.ListPreciosEditLink}" class="btn btn-primary"/>
+                                        <h:outputText value=" "/>
+                                        <h:commandLink action="#{preciosController.destroy}" value="#{bundle.ListPreciosDestroyLink}" class="btn btn-primary"/>
+                                    </h:column>
+                                </h:dataTable>
                             </div>
-                    </div>
-                </h:panelGroup>
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListPreciosIndexLink}"/>
+                        </div>
+                    </h:panelGroup>
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListPreciosIndexLink}"/>
                 </div>
             </h:form>
         </ui:define>

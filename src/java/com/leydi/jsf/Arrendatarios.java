@@ -151,7 +151,7 @@ public class Arrendatarios implements Serializable {
 
     @Override
     public String toString() {
-        return "com.leydi.jsf.Arrendatarios[ cedula=" + cedula + " ]";
+        return cedula + " - " + nombres + " " + apellidos ;
     }
     
 }
