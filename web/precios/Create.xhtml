@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePreciosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePreciosLabel_idPrecio}" for="idPrecio" />
+                    <h:inputText id="idPrecio" value="#{preciosController.selected.idPrecio}" title="#{bundle.CreatePreciosTitle_idPrecio}" required="true" requiredMessage="#{bundle.CreatePreciosRequiredMessage_idPrecio}"/>
+                    <h:outputLabel value="#{bundle.CreatePreciosLabel_valorArriendo}" for="valorArriendo" />
+                    <h:inputText id="valorArriendo" value="#{preciosController.selected.valorArriendo}" title="#{bundle.CreatePreciosTitle_valorArriendo}" required="true" requiredMessage="#{bundle.CreatePreciosRequiredMessage_valorArriendo}"/>
+                    <h:outputLabel value="#{bundle.CreatePreciosLabel_valorGarantia}" for="valorGarantia" />
+                    <h:inputText id="valorGarantia" value="#{preciosController.selected.valorGarantia}" title="#{bundle.CreatePreciosTitle_valorGarantia}" required="true" requiredMessage="#{bundle.CreatePreciosRequiredMessage_valorGarantia}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{preciosController.create}" value="#{bundle.CreatePreciosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{preciosController.prepareList}" value="#{bundle.CreatePreciosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePreciosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

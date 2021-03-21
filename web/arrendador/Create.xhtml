@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateArrendadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateArrendadorLabel_cedula}" for="cedula" />
+                    <h:inputText id="cedula" value="#{arrendadorController.selected.cedula}" title="#{bundle.CreateArrendadorTitle_cedula}" required="true" requiredMessage="#{bundle.CreateArrendadorRequiredMessage_cedula}"/>
+                    <h:outputLabel value="#{bundle.CreateArrendadorLabel_nombres}" for="nombres" />
+                    <h:inputText id="nombres" value="#{arrendadorController.selected.nombres}" title="#{bundle.CreateArrendadorTitle_nombres}" required="true" requiredMessage="#{bundle.CreateArrendadorRequiredMessage_nombres}"/>
+                    <h:outputLabel value="#{bundle.CreateArrendadorLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{arrendadorController.selected.apellidos}" title="#{bundle.CreateArrendadorTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateArrendadorRequiredMessage_apellidos}"/>
+                    <h:outputLabel value="#{bundle.CreateArrendadorLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{arrendadorController.selected.telefono}" title="#{bundle.CreateArrendadorTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.CreateArrendadorLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{arrendadorController.selected.email}" title="#{bundle.CreateArrendadorTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateArrendadorLabel_clave}" for="clave" />
+                    <h:inputText id="clave" value="#{arrendadorController.selected.clave}" title="#{bundle.CreateArrendadorTitle_clave}" required="true" requiredMessage="#{bundle.CreateArrendadorRequiredMessage_clave}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{arrendadorController.create}" value="#{bundle.CreateArrendadorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{arrendadorController.prepareList}" value="#{bundle.CreateArrendadorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateArrendadorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition template="/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListArrendadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListArrendadorEmpty}" rendered="#{arrendadorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{arrendadorController.items.rowCount > 0}">
+                    <h:outputText value="#{arrendadorController.pagination.pageFirstItem + 1}..#{arrendadorController.pagination.pageLastItem + 1}/#{arrendadorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{arrendadorController.previous}" value="#{bundle.Previous} #{arrendadorController.pagination.pageSize}" rendered="#{arrendadorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{arrendadorController.next}" value="#{bundle.Next} #{arrendadorController.pagination.pageSize}" rendered="#{arrendadorController.pagination.hasNextPage}"/>&nbsp;
+
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Lista de Arrendadores</h6>
+                            <div class="well well-sm text-right">
+                                <h:commandLink action="#{arrendadorController.prepareCreate}" value="#{bundle.ListArrendadorCreateLink}" class="btn btn-primary"/>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <h:dataTable value="#{arrendadorController.items}" var="item" width="100%" cellspacing="0" rules="all" id="dataTable" class="table table-bordered">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_cedula}"/>
+                                        </f:facet>
+                                        <f:facet name="footer">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_cedula}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cedula}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_nombres}"/>
+                                        </f:facet>
+                                        <f:facet name="footer">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_nombres}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nombres}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_apellidos}"/>
+                                        </f:facet>
+                                        <f:facet name="footer">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_apellidos}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.apellidos}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_telefono}"/>
+                                        </f:facet>
+                                        <f:facet name="footer">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_telefono}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.telefono}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_email}"/>
+                                        </f:facet>
+                                        <f:facet name="footer">
+                                            <h:outputText value="#{bundle.ListArrendadorTitle_email}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.email}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Acción"/>
+                                        </f:facet>
+                                        <f:facet name="footer">
+                                            <h:outputText value="Acción"/>
+                                        </f:facet>
+                                        <h:commandLink action="#{arrendadorController.prepareView}" value="#{bundle.ListArrendadorViewLink}" class="btn btn-primary"/>
+                                        <h:outputText value=" "/>
+                                        <h:commandLink action="#{arrendadorController.prepareEdit}" value="#{bundle.ListArrendadorEditLink}" class="btn btn-primary"/>
+                                        <h:outputText value=" "/>
+                                        <h:commandLink action="#{arrendadorController.destroy}" value="#{bundle.ListArrendadorDestroyLink}" class="btn btn-primary"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </div>
+                        </div>
+                    </div>
+
+                </h:panelGroup>
+                <br />
+
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListArrendadorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
