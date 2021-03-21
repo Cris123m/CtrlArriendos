@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/common/commonLayout.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.EditArrendatariosTitle}"></h:outputText>
         </ui:define>
@@ -16,13 +16,13 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditArrendatariosLabel_cedula}" for="cedula" />
-                    <h:inputText id="cedula" value="#{arrendatariosController.selected.cedula}" title="#{bundle.EditArrendatariosTitle_cedula}" required="true" requiredMessage="#{bundle.EditArrendatariosRequiredMessage_cedula}"/>
+                    <h:inputText id="cedula" value="#{arrendatariosController.selected.cedula}" title="#{bundle.EditArrendatariosTitle_cedula}" required="true" requiredMessage="#{bundle.EditArrendatariosRequiredMessage_cedula}" maxlength="10"/>
                     <h:outputLabel value="#{bundle.EditArrendatariosLabel_nombres}" for="nombres" />
                     <h:inputText id="nombres" value="#{arrendatariosController.selected.nombres}" title="#{bundle.EditArrendatariosTitle_nombres}" required="true" requiredMessage="#{bundle.EditArrendatariosRequiredMessage_nombres}"/>
                     <h:outputLabel value="#{bundle.EditArrendatariosLabel_apellidos}" for="apellidos" />
                     <h:inputText id="apellidos" value="#{arrendatariosController.selected.apellidos}" title="#{bundle.EditArrendatariosTitle_apellidos}" required="true" requiredMessage="#{bundle.EditArrendatariosRequiredMessage_apellidos}"/>
                     <h:outputLabel value="#{bundle.EditArrendatariosLabel_telefono}" for="telefono" />
-                    <h:inputText id="telefono" value="#{arrendatariosController.selected.telefono}" title="#{bundle.EditArrendatariosTitle_telefono}" required="true" requiredMessage="#{bundle.EditArrendatariosRequiredMessage_telefono}"/>
+                    <h:inputText id="telefono" value="#{arrendatariosController.selected.telefono}" title="#{bundle.EditArrendatariosTitle_telefono}" required="true" requiredMessage="#{bundle.EditArrendatariosRequiredMessage_telefono}" maxlength="10"/>
                     <h:outputLabel value="#{bundle.EditArrendatariosLabel_departamentoId}" for="departamentoId" />
                     <h:selectOneMenu id="departamentoId" value="#{arrendatariosController.selected.departamentoId}" title="#{bundle.EditArrendatariosTitle_departamentoId}" required="true" requiredMessage="#{bundle.EditArrendatariosRequiredMessage_departamentoId}">
                         <f:selectItems value="#{departamentosController.itemsAvailableSelectOne}"/>

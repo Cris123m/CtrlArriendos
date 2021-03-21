@@ -146,7 +146,7 @@ public class Departamentos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.leydi.jsf.Departamentos[ idDepartamento=" + idDepartamento + " ]";
+        return piso +" " + letra;
     }
     
 }

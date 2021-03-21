@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/common/commonLayout.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ViewArrendatariosTitle}"></h:outputText>
         </ui:define>
@@ -24,7 +24,7 @@
                     <h:outputText value="#{bundle.ViewArrendatariosLabel_telefono}"/>
                     <h:outputText value="#{arrendatariosController.selected.telefono}" title="#{bundle.ViewArrendatariosTitle_telefono}"/>
                     <h:outputText value="#{bundle.ViewArrendatariosLabel_departamentoId}"/>
-                    <h:outputText value="#{arrendatariosController.selected.departamentoId}" title="#{bundle.ViewArrendatariosTitle_departamentoId}"/>
+                    <h:outputText value="#{arrendatariosController.selected.departamentoId.piso} #{arrendatariosController.selected.departamentoId.letra}" title="#{bundle.ViewArrendatariosTitle_departamentoId}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{arrendatariosController.destroyAndView}" value="#{bundle.ViewArrendatariosDestroyLink}"/>

@@ -61,7 +61,6 @@
                     </div>
                 </li>
 
-                <!--  <?php if ($_SESSION['usuario']->rol_id == 1) { ?>-->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClientes"
                        aria-expanded="true" aria-controls="collapseClientes">
@@ -81,17 +80,55 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProductos"
-                       aria-expanded="true" aria-controls="collapseProductos">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseArrendatarios"
+                       aria-expanded="true" aria-controls="collapseArrendatarios">
                         <i class="fas fa-fw fa-wrench"></i>
-                        <span>Precios</span>
+                        <span>Arrendatarios</span>
                     </a>
-                    <div id="collapseProductos" class="collapse" aria-labelledby="headingUtilities"
+                    <div id="collapseArrendatarios" class="collapse" aria-labelledby="headingUtilities"
                          data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Acciones</h6>
-                            <a class="collapse-item" href="#">Lista Precios</a>
-                            <a class="collapse-item" href="#">Nuevo Precio</a>
+                            <h:form>
+                            <h:link outcome="/arrendatarios/List" value="Lista Arrendatarios" class="collapse-item"/>
+                            <h:link outcome="/arrendatarios/Create" value="Nuevo Arrendatario" class="collapse-item" />
+                            </h:form>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePrecios"
+                       aria-expanded="true" aria-controls="collapsePrecios">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Precios</span>
+                    </a>
+                    <div id="collapsePrecios" class="collapse" aria-labelledby="headingUtilities"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Acciones</h6>
+                            <h:form>
+                            <h:link outcome="/precios/List" value="Lista Precios" class="collapse-item"/>
+                            <h:link outcome="/precios/Create" value="Nuevo Precio" class="collapse-item" />
+                            </h:form>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagos"
+                       aria-expanded="true" aria-controls="collapsePagos">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Pagos</span>
+                    </a>
+                    <div id="collapsePagos" class="collapse" aria-labelledby="headingUtilities"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Acciones</h6>
+                            <h:form>
+                            <h:link outcome="/pagos/List" value="Lista Pagos" class="collapse-item"/>
+                            <h:link outcome="/pagos/Create" value="Nuevo Pagos" class="collapse-item" />
+                            </h:form>
                         </div>
                     </div>
                 </li>

@@ -5,12 +5,19 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/common/commonLayout.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListArrendatariosTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Lista de Arrendadores</h6>
+                        <div class="well well-sm text-right">
+                            <h:commandLink action="#{arrendatariosController.prepareCreate}" value="#{bundle.ListArrendatariosCreateLink}" class="btn btn-primary"/>
+                        </div>
+                    </div>
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
@@ -19,7 +26,9 @@
                     <h:outputText value="#{arrendatariosController.pagination.pageFirstItem + 1}..#{arrendatariosController.pagination.pageLastItem + 1}/#{arrendatariosController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{arrendatariosController.previous}" value="#{bundle.Previous} #{arrendatariosController.pagination.pageSize}" rendered="#{arrendatariosController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{arrendatariosController.next}" value="#{bundle.Next} #{arrendatariosController.pagination.pageSize}" rendered="#{arrendatariosController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{arrendatariosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <div class="card-body">
+                            <div class="table-responsive">
+                    <h:dataTable value="#{arrendatariosController.items}" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" var="item" width="100%" cellspacing="0" rules="all" id="dataTable" class="table table-bordered">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListArrendatariosTitle_cedula}"/>
@@ -48,25 +57,28 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListArrendatariosTitle_departamentoId}"/>
                             </f:facet>
-                            <h:outputText value="#{item.departamentoId}"/>
+                            <h:outputText value="#{item.departamentoId.piso} #{item.departamentoId.letra}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
+                                <h:outputText value="Acción"/>
                             </f:facet>
-                            <h:commandLink action="#{arrendatariosController.prepareView}" value="#{bundle.ListArrendatariosViewLink}"/>
+                            <h:commandLink action="#{arrendatariosController.prepareView}" value="#{bundle.ListArrendatariosViewLink}" class="btn btn-primary"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{arrendatariosController.prepareEdit}" value="#{bundle.ListArrendatariosEditLink}"/>
+                            <h:commandLink action="#{arrendatariosController.prepareEdit}" value="#{bundle.ListArrendatariosEditLink}" class="btn btn-primary"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{arrendatariosController.destroy}" value="#{bundle.ListArrendatariosDestroyLink}"/>
+                            <h:commandLink action="#{arrendatariosController.destroy}" value="#{bundle.ListArrendatariosDestroyLink}" class="btn btn-primary"/>
                         </h:column>
                     </h:dataTable>
+                            </div>
+                    </div>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{arrendatariosController.prepareCreate}" value="#{bundle.ListArrendatariosCreateLink}"/>
+                
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListArrendatariosIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>
