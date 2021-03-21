@@ -119,7 +119,7 @@ public class Precios implements Serializable {
 
     @Override
     public String toString() {
-        return "com.leydi.jsf.Precios[ idPrecio=" + idPrecio + " ]";
+        return idPrecio + " Arriendo: " + valorArriendo + " Garantia: " + valorGarantia;
     }
     
 }

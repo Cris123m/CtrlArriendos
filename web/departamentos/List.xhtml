@@ -5,12 +5,19 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/common/commonLayout.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListDepartamentosTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Lista de Departamentos</h6>
+                        <div class="well well-sm text-right">
+                            <h:commandLink action="#{departamentosController.prepareCreate}" value="#{bundle.ListDepartamentosCreateLink}" class="btn btn-primary"/>
+                        </div>
+                    </div>
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
@@ -19,7 +26,9 @@
                     <h:outputText value="#{departamentosController.pagination.pageFirstItem + 1}..#{departamentosController.pagination.pageLastItem + 1}/#{departamentosController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{departamentosController.previous}" value="#{bundle.Previous} #{departamentosController.pagination.pageSize}" rendered="#{departamentosController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{departamentosController.next}" value="#{bundle.Next} #{departamentosController.pagination.pageSize}" rendered="#{departamentosController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{departamentosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <div class="card-body">
+                            <div class="table-responsive">
+                    <h:dataTable value="#{departamentosController.items}" var="item" width="100%" cellspacing="0" rules="all" id="dataTable" class="table table-bordered">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDepartamentosTitle_idDepartamento}"/>
@@ -46,9 +55,15 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDepartamentosTitle_precioId}"/>
+                                <h:outputText value="Arriendo"/>
                             </f:facet>
-                            <h:outputText value="#{item.precioId}"/>
+                            <h:outputText value="#{item.precioId.valorArriendo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Garantia"/>
+                            </f:facet>
+                            <h:outputText value="#{item.precioId.valorGarantia}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -61,12 +76,15 @@
                             <h:commandLink action="#{departamentosController.destroy}" value="#{bundle.ListDepartamentosDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
+                            </div>
+                    </div>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{departamentosController.prepareCreate}" value="#{bundle.ListDepartamentosCreateLink}"/>
+                
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListDepartamentosIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

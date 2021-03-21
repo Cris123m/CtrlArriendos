@@ -11,24 +11,26 @@
             <h:outputText value="#{bundle.ListArrendadorTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+
             <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListArrendadorEmpty}" rendered="#{arrendadorController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{arrendadorController.items.rowCount > 0}">
-                    <h:outputText value="#{arrendadorController.pagination.pageFirstItem + 1}..#{arrendadorController.pagination.pageLastItem + 1}/#{arrendadorController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{arrendadorController.previous}" value="#{bundle.Previous} #{arrendadorController.pagination.pageSize}" rendered="#{arrendadorController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{arrendadorController.next}" value="#{bundle.Next} #{arrendadorController.pagination.pageSize}" rendered="#{arrendadorController.pagination.hasNextPage}"/>&nbsp;
-
-
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Lista de Arrendadores</h6>
-                            <div class="well well-sm text-right">
-                                <h:commandLink action="#{arrendadorController.prepareCreate}" value="#{bundle.ListArrendadorCreateLink}" class="btn btn-primary"/>
-                            </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Lista de Arrendadores</h6>
+                        <div class="well well-sm text-right">
+                            <h:commandLink action="#{arrendadorController.prepareCreate}" value="#{bundle.ListArrendadorCreateLink}" class="btn btn-primary"/>
                         </div>
+                    </div>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListArrendadorEmpty}" rendered="#{arrendadorController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{arrendadorController.items.rowCount > 0}">
+                        <h:outputText value="#{arrendadorController.pagination.pageFirstItem + 1}..#{arrendadorController.pagination.pageLastItem + 1}/#{arrendadorController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{arrendadorController.previous}" value="#{bundle.Previous} #{arrendadorController.pagination.pageSize}" rendered="#{arrendadorController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{arrendadorController.next}" value="#{bundle.Next} #{arrendadorController.pagination.pageSize}" rendered="#{arrendadorController.pagination.hasNextPage}"/>&nbsp;
+
+
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <h:dataTable value="#{arrendadorController.items}" var="item" width="100%" cellspacing="0" rules="all" id="dataTable" class="table table-bordered">
@@ -92,15 +94,17 @@
                                     </h:column>
                                 </h:dataTable>
                             </div>
+
                         </div>
-                    </div>
 
-                </h:panelGroup>
-                <br />
+                    </h:panelGroup>
 
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListArrendadorIndexLink}"/>
+                    <br />
+
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListArrendadorIndexLink}"/>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

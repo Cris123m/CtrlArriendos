@@ -72,8 +72,10 @@
                          data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Acciones</h6>
-                            <a class="collapse-item" href="#">Lista Arrendadores</a>
-                            <a class="collapse-item" href="#">Nuevo Arrendador</a>
+                            <h:form>
+                            <h:link outcome="/arrendador/List" value="Lista Arrendadores" class="collapse-item"/>
+                            <h:link outcome="/arrendador/Create" value="Nuevo Arrendador" class="collapse-item" />
+                            </h:form>
                         </div>
                     </div>
                 </li>
