@@ -26,7 +26,7 @@
                     <h:outputLabel value="#{bundle.CreateArrendadorLabel_email}" for="email" />
                     <h:inputText id="email" value="#{arrendadorController.selected.email}" title="#{bundle.CreateArrendadorTitle_email}" />
                     <h:outputLabel value="#{bundle.CreateArrendadorLabel_clave}" for="clave" />
-                    <h:inputText id="clave" value="#{arrendadorController.selected.clave}" title="#{bundle.CreateArrendadorTitle_clave}" required="true" requiredMessage="#{bundle.CreateArrendadorRequiredMessage_clave}"/>
+                    <h:inputSecret id="clave" value="#{arrendadorController.selected.clave}" title="#{bundle.CreateArrendadorTitle_clave}" required="true" requiredMessage="#{bundle.CreateArrendadorRequiredMessage_clave}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{arrendadorController.create}" value="#{bundle.CreateArrendadorSaveLink}" />

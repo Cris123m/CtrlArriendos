@@ -26,7 +26,7 @@
                     <h:outputLabel value="#{bundle.EditArrendadorLabel_email}" for="email" />
                     <h:inputText id="email" value="#{arrendadorController.selected.email}" title="#{bundle.EditArrendadorTitle_email}" />
                     <h:outputLabel value="#{bundle.EditArrendadorLabel_clave}" for="clave" />
-                    <h:inputText id="clave" value="#{arrendadorController.selected.clave}" title="#{bundle.EditArrendadorTitle_clave}" required="true" requiredMessage="#{bundle.EditArrendadorRequiredMessage_clave}"/>
+                    <h:inputSecret id="clave" value="#{arrendadorController.selected.clave}" title="#{bundle.EditArrendadorTitle_clave}" required="true" requiredMessage="#{bundle.EditArrendadorRequiredMessage_clave}"/>
                 </h:panelGrid>
                 <h:commandLink action="#{arrendadorController.update}" value="#{bundle.EditArrendadorSaveLink}"/>
                 <br />

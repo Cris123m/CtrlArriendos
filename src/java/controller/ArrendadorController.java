@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -190,6 +191,8 @@ public class ArrendadorController implements Serializable {
     public Arrendador getArrendador(java.lang.String id) {
         return ejbFacade.find(id);
     }
+    
+    
 
     @FacesConverter(forClass = Arrendador.class)
     public static class ArrendadorControllerConverter implements Converter {
@@ -229,6 +232,35 @@ public class ArrendadorController implements Serializable {
             }
         }
 
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+        
+    private String cedula;
+    private String clave;
+    public String authenticate() {
+        Arrendador arrendador = ejbFacade.authenticate(this.getCedula(),this.getClave());
+        if (arrendador != null){            
+            return "arrendatarios";
+        } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("login", new FacesMessage("Invalid UserName and Password"));
+            return "login";
+        }
     }
 
 }

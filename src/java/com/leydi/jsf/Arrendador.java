@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Arrendador.findByApellidos", query = "SELECT a FROM Arrendador a WHERE a.apellidos = :apellidos")
     , @NamedQuery(name = "Arrendador.findByTelefono", query = "SELECT a FROM Arrendador a WHERE a.telefono = :telefono")
     , @NamedQuery(name = "Arrendador.findByEmail", query = "SELECT a FROM Arrendador a WHERE a.email = :email")
+    , @NamedQuery(name = "Arrendador.authenticate", query = "SELECT a FROM Arrendador a WHERE a.cedula = :cedula AND a.clave = :clave")
     , @NamedQuery(name = "Arrendador.findByClave", query = "SELECT a FROM Arrendador a WHERE a.clave = :clave")})
 public class Arrendador implements Serializable {
 
@@ -54,7 +55,7 @@ public class Arrendador implements Serializable {
     @Size(max = 10)
     @Column(name = "telefono")
     private String telefono;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    //@Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 255)
     @Column(name = "email")
     private String email;

@@ -28,5 +28,12 @@ public class ArrendadorFacade extends AbstractFacade<Arrendador> {
     public ArrendadorFacade() {
         super(Arrendador.class);
     }
-    
+
+    public Arrendador authenticate(String cedula, String clave) {
+        Arrendador arrendador = (Arrendador) em.createNamedQuery("Arrendador.authenticate")
+                .setParameter("cedula", cedula)
+                .setParameter("clave", clave)
+                .getResultList().get(0);
+        return arrendador;
+    }   
 }

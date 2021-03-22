@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewArrendatariosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewArrendatariosLabel_cedula}"/>
+                    <h:outputText value="#{arrendatariosController.selected.cedula}" title="#{bundle.ViewArrendatariosTitle_cedula}"/>
+                    <h:outputText value="#{bundle.ViewArrendatariosLabel_nombres}"/>
+                    <h:outputText value="#{arrendatariosController.selected.nombres}" title="#{bundle.ViewArrendatariosTitle_nombres}"/>
+                    <h:outputText value="#{bundle.ViewArrendatariosLabel_apellidos}"/>
+                    <h:outputText value="#{arrendatariosController.selected.apellidos}" title="#{bundle.ViewArrendatariosTitle_apellidos}"/>
+                    <h:outputText value="#{bundle.ViewArrendatariosLabel_telefono}"/>
+                    <h:outputText value="#{arrendatariosController.selected.telefono}" title="#{bundle.ViewArrendatariosTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewArrendatariosLabel_departamentoId}"/>
+                    <h:outputText value="#{arrendatariosController.selected.departamentoId.piso} #{arrendatariosController.selected.departamentoId.letra}" title="#{bundle.ViewArrendatariosTitle_departamentoId}"/>
+                </h:panelGrid>
+                <br />
+                 <h:form styleClass="jsfcrud_list_form">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Lista de Pagos</h6>
+                    </div>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListPagosEmpty}" rendered="#{pagosController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{pagosController.items.rowCount > 0}">
+                        <h:outputText value="#{pagosController.pagination.pageFirstItem + 1}..#{pagosController.pagination.pageLastItem + 1}/#{pagosController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{pagosController.previous}" value="#{bundle.Previous} #{pagosController.pagination.pageSize}" rendered="#{pagosController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{pagosController.next}" value="#{bundle.Next} #{pagosController.pagination.pageSize}" rendered="#{pagosController.pagination.hasNextPage}"/>&nbsp;
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <h:dataTable value="#{pagosController.items}" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" var="item" width="100%" cellspacing="0" rules="all" id="dataTable" class="table table-bordered">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListPagosTitle_idPago}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idPago}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListPagosTitle_fechaPago}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.fechaPago}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListPagosTitle_abonado}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.abonado}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListPagosTitle_estado}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.estado}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListPagosTitle_arrendatariosCedula}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.arrendatariosCedula}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Acción"/>
+                                        </f:facet>
+                                        <h:commandLink action="#{pagosController.prepareView}" value="#{bundle.ListPagosViewLink}" class="btn btn-primary"/>
+                                        <h:outputText value=" "/>
+                                        <h:commandLink action="#{pagosController.prepareEdit}" value="#{bundle.ListPagosEditLink}" class="btn btn-primary"/>
+                                        <h:outputText value=" "/>
+                                        <h:commandLink action="#{pagosController.destroy}" value="#{bundle.ListPagosDestroyLink}" class="btn btn-primary"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </div>
+                        </div>
+                    </h:panelGroup>
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListPagosIndexLink}"/>
+                </div>
+            </h:form>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
